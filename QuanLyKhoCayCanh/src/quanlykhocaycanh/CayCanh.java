@@ -84,16 +84,33 @@ public class CayCanh implements Serializable {
         this.nam = nam;
     }
 
-    public void ThoiGian() {
+     public void ThoiGian() {
         Scanner input = new Scanner(System.in);
+
         do {
-                System.out.println("Nhap ngay: ");
-                ngay = input.nextInt();
-                System.out.println("Nhap thang: ");
-                thang = input.nextInt();
-                System.out.println("Nhap nam: ");
-                nam = input.nextInt();
-        } while(ngay<0||ngay>31||thang<0||thang>12||nam<0);
+            System.out.println("Nhap thang: ");
+            thang = input.nextInt();
+            System.out.println("Nhap nam: ");
+            nam = input.nextInt();
+            if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12) {
+                do {
+                    System.out.println("Nhap ngay: ");
+                    ngay = input.nextInt();
+                } while (ngay > 31 || ngay < 0);
+            }
+            if (thang == 4 || thang == 6 || thang == 9 || thang == 11) {
+                do {
+                    System.out.println("Nhap ngay: ");
+                    ngay = input.nextInt();
+                } while (ngay > 30 || ngay < 0);
+            }
+            if (thang == 2) {
+                do {
+                    System.out.println("Nhap ngay: ");
+                    ngay = input.nextInt();
+                } while (ngay > 28 || ngay < 0);
+            }
+        } while (thang < 0 || thang > 12 || nam < 0);
     }
 
     public void Nhap() {
@@ -110,6 +127,6 @@ public class CayCanh implements Serializable {
     }
 
     public void Xuat() {
-        System.out.println("-----| Ma Cay Canh: " + getMaCC() +"|"+ "| Ten Cay: " + gettencay() + "| Phan Loai: " + getPhanloai() + "| soluong: " + getsoluong() + "| Thoi gian: "+ngay+"|"+thang+"|"+nam+"|----");
+        System.out.println("-----| Ma Cay Canh: " + getMaCC() + "|" + "| Ten Cay: " + gettencay() + "| Phan Loai: " + getPhanloai() + "| soluong: " + getsoluong() + "| Thoi gian: " + ngay + "|" + thang + "|" + nam + "|----");
     }
 }
